@@ -3,6 +3,11 @@ on:
     branches: [ "main" ]
 
 
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: repo/github-action
+  CONTAINER_NAME: github-actions
+
 jobs:
   build:
 
@@ -22,7 +27,29 @@ jobs:
 
       - name: Make Maven Wrapper Executable
         run: chmod +x mvnw
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
       - name: Run CI/CD Script
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./scm/txt.sh
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Add this for SonarCloud/PR features
+            ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#            ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+#            CONTAINER_NAME: ${{ env.CONTAINER_NAME }}
+#            EC2_HOST: ${{ secrets.EC2_HOST }}
+#            EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+            run: ./scm/txt.sh
+
+      #build a docker container and push it to ECR so that it can be deployed to ECS
+
+
