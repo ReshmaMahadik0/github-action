@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 spring:
   application:
     name: github-actions
@@ -11,7 +10,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://localhost:5432/user
-    username: postgres
-    password: root
+
+  profiles:
+    active: prod
