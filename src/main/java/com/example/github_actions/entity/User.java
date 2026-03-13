@@ -20,6 +20,10 @@ public class User {
         this.email = email;
     }
 
+    public User(long l, String john, String mail) {
+    }
+
+
     public Long getId() {
         return id;
     }
