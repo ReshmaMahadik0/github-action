@@ -1,8 +1,6 @@
 on:
   push:
     branches: [ "main" ]
-
-
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: repo/github-action
@@ -49,6 +47,10 @@ jobs:
 #            EC2_HOST: ${{ secrets.EC2_HOST }}
 #            EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
             run: ./scm/txt.sh
+
+
+
+
 
       #build a docker container and push it to ECR so that it can be deployed to ECS
 
