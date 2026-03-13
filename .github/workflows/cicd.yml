@@ -17,7 +17,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+        run: chmod +x mvnw
       - name: Run CI/CD Script
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run:  ./scm/txt.sh
+        run: ./scm/txt.sh
