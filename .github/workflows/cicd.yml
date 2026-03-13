@@ -4,7 +4,7 @@ on:
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: repo/github-action
-#  CONTAINER_NAME: github-action
+  CONTAINER_NAME: container-github-action
 
 jobs:
   build:
@@ -42,10 +42,10 @@ jobs:
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Add this for SonarCloud/PR features
            ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-#          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
-#          CONTAINER_NAME: ${{ env.CONTAINER_NAME }}
-#          EC2_HOST: ${{ secrets.EC2_HOST }}
-#          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+           ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+           CONTAINER_NAME: ${{ env.CONTAINER_NAME }}
+           EC2_HOST: ${{ secrets.EC2_HOST }}
+           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: ./scm/txt.sh
 
 
