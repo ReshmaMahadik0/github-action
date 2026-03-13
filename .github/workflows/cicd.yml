@@ -20,4 +20,4 @@ jobs:
       - name: Run CI/CD Script
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: bash scm/txt.sh
+        run:  ./scm/txt.sh
