@@ -31,6 +31,10 @@ chmod 400 key.pem
 
 ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@$EC2_HOST << EOF
 
+export DB_USERNAME=$DB_USERNAME
+export DB_PASSWORD=$DB_PASSWORD
+
+echo "Login to ECR"
 aws ecr get-login-password --region $AWS_REGION \
 | docker login --username AWS --password-stdin $ECR_REGISTRY
 
