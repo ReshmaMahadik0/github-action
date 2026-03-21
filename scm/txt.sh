@@ -49,6 +49,8 @@ docker rm $CONTAINER_NAME || true
 docker run -d \
 -p 80:8080 \
 --name $CONTAINER_NAME \
+-e DB_USERNAME=$DB_USERNAME \
+-e DB_PASSWORD=$DB_PASSWORD \
 $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
 EOF
