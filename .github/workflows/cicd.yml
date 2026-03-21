@@ -5,8 +5,6 @@ env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: repo/github-action
   CONTAINER_NAME: container-github-action
-  DB_USERNAME: ${{ secrets.DB_USERNAME }}
-  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 #  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -48,6 +46,8 @@ jobs:
            CONTAINER_NAME: ${{ env.CONTAINER_NAME }}
            EC2_HOST: ${{ secrets.EC2_HOST }}
            EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+           DB_USERNAME: ${{ secrets.DB_USERNAME }}
+           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: ./scm/txt.sh
 
 
