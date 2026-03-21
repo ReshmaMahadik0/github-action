@@ -1,8 +1,11 @@
 spring:
   datasource:
     url: jdbc:postgresql://database-1.cvueaycuym9h.ap-south-1.rds.amazonaws.com:5432/userdb
-    username: postgres
-    password: postgres1234
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+#    username: postgres
+#    password: postgres1234
 
 #userTest
 #userpass
