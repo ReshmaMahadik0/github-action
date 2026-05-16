@@ -56,3 +56,5 @@ $ECR_REGISTRY/$ECR_REPOSITORY:latest
 EOF
 
 echo "Deployment Completed"
+
+
